@@ -1,0 +1,6 @@
+@CleanCqrs.WepApi_HostAddress = http://localhost:5069
+
+GET {{CleanCqrs.WepApi_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
