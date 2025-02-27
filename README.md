@@ -1,2 +1,2 @@
 # CleanCqrsProject
-Asp.Net Core (CQRS Pattern) ,EntityFramework Core(CodeFirst) ,FluentValidation
+Asp.Net Core (CQRS Pattern) ,EntityFramework Core(CodeFirst) ,FluentValidation,AutoMapper
