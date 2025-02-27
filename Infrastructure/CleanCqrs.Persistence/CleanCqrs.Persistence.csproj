@@ -6,4 +6,13 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="FakeStore.Database" Version="1.2.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="9.0.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Core\CleanCqrs.Domain\CleanCqrs.Domain.csproj" />
+  </ItemGroup>
+
 </Project>
