@@ -13,7 +13,7 @@ namespace CleanCqrs.Persistence.Context
     public class AppDbContext:DbContext
     {
         public AppDbContext(){ }
-        public AppDbContext(DbContext options):base(options)
+        public AppDbContext(DbContextOptions options) : base(options)
         {
             
         }
@@ -27,6 +27,7 @@ namespace CleanCqrs.Persistence.Context
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            base.OnModelCreating(modelBuilder);
             modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
         }
 

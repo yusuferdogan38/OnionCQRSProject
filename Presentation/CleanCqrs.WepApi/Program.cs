@@ -18,7 +18,7 @@ builder.Configuration.SetBasePath(env.ContentRootPath)
     ;
 
 
-;
+
 builder.Services. AddPersistance(builder.Configuration);
 
 var app = builder.Build();

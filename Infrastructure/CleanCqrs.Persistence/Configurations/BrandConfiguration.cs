@@ -28,7 +28,7 @@ namespace CleanCqrs.Persistence.Configurations
 
             Brand brand2 = new Brand()
             {
-                Id = 1,
+                Id = 2,
                 Name = faker.Commerce.Department(),
                 CreatedDate = DateTime.Now,
                 IsDeleted = true,
