@@ -21,6 +21,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\Core\CleanCqrs.Application\CleanCqrs.Application.csproj" />
     <ProjectReference Include="..\..\Core\CleanCqrs.Domain\CleanCqrs.Domain.csproj" />
   </ItemGroup>
 

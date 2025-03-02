@@ -1,4 +1,6 @@
-﻿using CleanCqrs.Persistence.Context;
+﻿using CleanCqrs.Application.Repositories;
+using CleanCqrs.Persistence.Context;
+using CleanCqrs.Persistence.Repositories;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -18,6 +20,8 @@ namespace CleanCqrs.Persistence.Registration
             {
                 options.UseSqlServer(configuration.GetConnectionString("DefaultConnection"));
             });
+
+            services.AddScoped(typeof(IReadRepository<>), typeof(ReadRepository<>));
         }
     }
 }
