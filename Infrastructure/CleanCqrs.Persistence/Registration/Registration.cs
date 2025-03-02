@@ -22,6 +22,7 @@ namespace CleanCqrs.Persistence.Registration
             });
 
             services.AddScoped(typeof(IReadRepository<>), typeof(ReadRepository<>));
+            services.AddScoped(typeof(IWriteRepository<>), typeof(WriteRepository<>));
         }
     }
 }
