@@ -1,4 +1,5 @@
 ﻿using CleanCqrs.Domain.Common;
+using CleanCqrs.Domain.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,7 +26,7 @@ namespace CleanCqrs.Domain.Entityies
         public string Name { get; set; }
         public int Priorty { get; set; }
 
-        public ICollection<Product> Products { get; set; }
+        ICollection<ProductCategory> ProductCategories { get; set; }
 
         public ICollection<Detail> Details { get; set; }
 
