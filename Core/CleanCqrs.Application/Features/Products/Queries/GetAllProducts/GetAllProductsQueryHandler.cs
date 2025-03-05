@@ -1,6 +1,9 @@
-﻿using CleanCqrs.Application.UnitOfWorks;
+﻿using CleanCqrs.Application.AutoMapper;
+using CleanCqrs.Application.DTO_s;
+using CleanCqrs.Application.UnitOfWorks;
 using CleanCqrs.Domain.Entityies;
 using MediatR;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,28 +15,24 @@ namespace CleanCqrs.Application.Features.Products.Queries.GetAllProducts
     public class GetAllProductsQueryHandler : IRequestHandler<GetAllProductsQueryRequest, IList<GetAllProductsQueryResponse>>
     {
         private readonly IUnitOfwork unitOfWork;
-        public GetAllProductsQueryHandler(IUnitOfwork unitOfWork)
+        private readonly IMapper mapper;
+
+        public GetAllProductsQueryHandler(IUnitOfwork unitOfWork, IMapper mapper)
         {
             this.unitOfWork = unitOfWork;
+            this.mapper = mapper;
         }
         public async Task<IList<GetAllProductsQueryResponse>> Handle(GetAllProductsQueryRequest request, CancellationToken cancellationToken)
         {
-            
-            var products= await unitOfWork.GetReadRepository<Product>().GetAllAsync();
-            List<GetAllProductsQueryResponse> response = new();
-            foreach (var product in products)
-            {
-                response.Add(new GetAllProductsQueryResponse
-                {
-                    Name = product.Name,
-                    Description = product.Description,
-                    Price = product.Price-(product.Price*product.Discount/100),
-                    Discount = product.Discount
-                });
-            }
+            var products = await unitOfWork.GetReadRepository<Product>().GetAllAsync(include: x => x.Include(b => b.Brand));
 
+            var brand = mapper.Map<BrandDto, Brand>(new Brand());
 
-            return response;
+            var map = mapper.Map<GetAllProductsQueryResponse, Product>(products);
+            foreach (var item in map)
+                item.Price -= (item.Price * item.Discount / 100);
+
+            return map;
         }
     }
 }

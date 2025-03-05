@@ -1,6 +1,7 @@
 
 
 using CleanCqrs.Persistence.Registration;
+using CleanCqrs.Application.Registration;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -20,7 +21,7 @@ builder.Configuration.SetBasePath(env.ContentRootPath)
 
 
 builder.Services. AddPersistance(builder.Configuration);
-
+builder.Services.AddApplication();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
